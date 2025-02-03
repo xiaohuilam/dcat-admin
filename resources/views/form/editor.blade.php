@@ -6,7 +6,7 @@
 
         @include('admin::form.error')
 
-        <textarea class="form-control {{$class}}" name="{{$name}}" placeholder="{{ $placeholder }}" {!! $attributes !!} >{{ $value }}</textarea>
+        <textarea class="form-control {{$class}}" name="{{$name}}" placeholder="{{ $placeholder }}" {!! $attributes !!} >{!! htmlentities($value) !!}</textarea>
 
         @include('admin::form.help-block')
 
