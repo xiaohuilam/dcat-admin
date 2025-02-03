@@ -6,7 +6,7 @@
 
         @include('admin::form.error')
 
-        <textarea class="form-control {{$class}}" name="{{$name}}" placeholder="{{ $placeholder }}" {!! $attributes !!} >{{ $value }}</textarea>
+        <textarea class="form-control {{$class}}" name="{{$name}}" placeholder="{{ $placeholder }}" {!! $attributes !!} >{!! htmlentities($value) !!}</textarea>
 
         @include('admin::form.help-block')
 
@@ -17,6 +17,9 @@
     var opts = {!! admin_javascript_json($options) !!};
 
     opts.selector = '#'+id;
+    // opts.images_upload_url = '/tinymce/upload';
+    // opts.automatic_uploads = true;
+    // opts.images_upload_base_path = '/tinymce/uplod/image';
 
     if (! opts.init_instance_callback) {
         opts.init_instance_callback = function (editor) {
@@ -25,6 +28,8 @@
             });
         }
     }
+
+    console.log(opts);
 
     tinymce.init(opts)
 </script>
